@@ -16,3 +16,7 @@ class TestExample(unittest.TestCase):
     def test_power_number_should_not_be_negative(self):
         with self.assertRaises(TypeError):
             power(-1, 2)
+
+    def test_power_exponent_should_not_be_negative(self):
+        with self.assertRaises(TypeError):
+            power(3, -4)
