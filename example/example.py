@@ -4,7 +4,8 @@ def add(first, second):
     :param second: an integer
     :returns: The sum of the two numbers
     """
-    pass
+    result = first + second
+    return result
 
 
 def power(number, exponent):
@@ -13,4 +14,8 @@ def power(number, exponent):
     :param exponent: a positive integer
     :returns: The power of the number to the exponent
     """
-    pass
+    if number < 0 or exponent < 0:
+        raise TypeError
+    else:
+        result = number ** exponent
+    return result
