@@ -6,13 +6,14 @@ class LinkedList:
         """
         Initialize the LinkedList here
         """
-        pass
+        self.head = None
+        self.tail = self.head
 
     def get_head(self):
-        pass
+        return self.head
 
     def get_tail(self):
-        pass
+        return self.tail
 
     def add(self, value):
         """
@@ -20,7 +21,16 @@ class LinkedList:
 
         :param value: the value to be added
         """
-        pass
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = self.head
+        else:
+            previous_node = self.head
+            while previous_node.next:
+                previous_node = previous_node.next
+            previous_node.next = new_node
+            self.tail = previous_node.next
 
     def prepend(self, value):
         """
@@ -28,7 +38,10 @@ class LinkedList:
 
         :param value: the value to be added
         """
-        pass
+        new_node = Node(value)
+        current_node = self.head
+        new_node.next = current_node
+        self.head = new_node
 
     def remove(self, value):
         """
@@ -46,7 +59,13 @@ class LinkedList:
         :rtype: collections.Iterable[Node]
         :returns: An array of the items in the list
         """
-        pass
+        elements = []
+        current_node = self.head
+        while current_node:
+            # is the same as while current_node.next != None: or is not None
+            elements.append(current_node.value)
+            current_node = current_node.next
+        return elements
 
     def search(self, value):
         """

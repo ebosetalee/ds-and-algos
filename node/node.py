@@ -3,4 +3,5 @@ class Node:
         """
         Initialize the Node here
         """
-        pass
+        self.value = value
+        self.next = None
