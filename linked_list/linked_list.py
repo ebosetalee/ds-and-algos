@@ -50,7 +50,19 @@ class LinkedList:
         :param value: the value to be removed
         :return: True if the value was removed, or False if the value isn't in the list
         """
-        pass
+        current_node = self.head
+        previous_node = None
+        while current_node:
+            if current_node.value == value:
+                if previous_node:
+                    previous_node.next = current_node.next
+                else:
+                    self.head = current_node.next
+                return True
+            else:
+                previous_node = current_node
+                current_node = current_node.next
+        return False
 
     def walk(self):
         """
@@ -74,4 +86,10 @@ class LinkedList:
         :param value: The item searched for
         :returns: True if the value was found, or False if the value was not found 
         """
-        pass
+        current_node = self.head
+        while current_node:
+            if current_node.value == value:
+                return True
+            else:
+                current_node = current_node.next
+        return False
