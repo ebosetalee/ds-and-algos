@@ -88,6 +88,5 @@ class LinkedList:
         while current_node:
             if current_node.value == value:
                 return True
-            else:
-                current_node = current_node.next
+            current_node = current_node.next
         return False
