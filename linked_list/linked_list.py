@@ -22,7 +22,7 @@ class LinkedList:
         :param value: the value to be added
         """
         new_node = Node(value)
-        if self.head is None:
+        if not self.head:
             self.head = new_node
             self.tail = self.head
         else:
