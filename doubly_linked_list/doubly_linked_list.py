@@ -10,7 +10,15 @@ class DoublyLinkedList(LinkedList):
 
         :param value: the value to be added
         """
-        pass
+        new_node = Node(value)
+        if not self.head:
+            self.head = new_node
+            self.tail = self.head
+        else:
+            current_node = self.tail
+            current_node.previous = self.head
+            current_node.next = new_node
+            self.tail = current_node.next
 
     def prepend(self, value):
         """
@@ -36,4 +44,11 @@ class DoublyLinkedList(LinkedList):
         :rtype: collections.Iterable[Node]
         :returns: A reversed array of the items in the list
         """
-        pass
+        elements = []
+        current_node = self.head
+        while current_node:
+            # is the same as while current_node.next != None: or is not None
+            elements.append(current_node.value)
+            current_node = current_node.next
+        # print(elements[::-1])
+        return elements[::-1]
