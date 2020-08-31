@@ -5,3 +5,4 @@ class Node:
         """
         self.value = value
         self.next = None
+        self.previous = None
