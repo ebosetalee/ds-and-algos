@@ -12,13 +12,13 @@ class DoublyLinkedList(LinkedList):
         """
         new_node = Node(value)
         if not self.head:
+            # self.head.previous = None
             self.head = new_node
             self.tail = self.head
         else:
-            current_node = self.tail
-            current_node.previous = self.head
-            current_node.next = new_node
-            self.tail = current_node.next
+            new_node.previous = self.tail
+            self.tail.next = new_node
+            self.tail = new_node
 
     def prepend(self, value):
         """
@@ -26,7 +26,10 @@ class DoublyLinkedList(LinkedList):
 
         :param value: the value to be added
         """
-        pass
+        new_node = Node(value)
+        self.head.previous = new_node
+        new_node.next = self.head
+        self.head = new_node
 
     def remove(self, value):
         """
