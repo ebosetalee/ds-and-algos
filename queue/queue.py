@@ -43,4 +43,4 @@ class Queue(LinkedList):
         """
         :returns: the value of the item at the head
         """
-        pass
+        return self.items.head.value
