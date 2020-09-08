@@ -1,7 +1,7 @@
 from linked_list.linked_list import LinkedList
 
 
-class Queue(LinkedList):
+class Queue:
     """
     The queue uses a LinkedList internally to manage the items
     """
@@ -10,7 +10,6 @@ class Queue(LinkedList):
         """
         Initialize the Queue with an empty LinkedList
         """
-        super().__init__()
         self.items = LinkedList()
 
     def is_empty(self):
