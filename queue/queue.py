@@ -10,13 +10,14 @@ class Queue(LinkedList):
         """
         Initialize the Queue with an empty LinkedList
         """
+        super().__init__()
         self.items = LinkedList()
 
     def is_empty(self):
         """
         :returns: True if the LinkedList is empty and False if it isn't
         """
-        if self.items.head is None:
+        if not self.items.head:
             return True
         return False
 
@@ -25,14 +26,18 @@ class Queue(LinkedList):
         Adds the value to the back of the LinkedList
         :param value: the value to be added
         """
-        pass
+        self.items.add(value)
 
     def dequeue(self):
         """
         Removes the value at the head
         :return: the value of the item at the head
         """
-        pass
+        current_node = self.items.head
+        if not self.items.head:
+            return self.items.head.value
+        self.items.head = self.items.head.next
+        return current_node.value
 
     def peek(self):
         """
