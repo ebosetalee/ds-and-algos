@@ -17,9 +17,7 @@ class Queue(LinkedList):
         """
         :returns: True if the LinkedList is empty and False if it isn't
         """
-        if not self.items.head:
-            return True
-        return False
+        return self.items.head is None
 
     def enqueue(self, value):
         """
@@ -35,7 +33,7 @@ class Queue(LinkedList):
         """
         current_node = self.items.head
         if not self.items.head:
-            return self.items.head.value
+            return None
         self.items.head = self.items.head.next
         return current_node.value
 
