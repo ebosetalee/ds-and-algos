@@ -1,7 +1,7 @@
 from linked_list.linked_list import LinkedList
 
 
-class Queue:
+class Queue(LinkedList):
     """
     The queue uses a LinkedList internally to manage the items
     """
@@ -10,13 +10,15 @@ class Queue:
         """
         Initialize the Queue with an empty LinkedList
         """
-        pass
+        self.items = LinkedList()
 
     def is_empty(self):
         """
         :returns: True if the LinkedList is empty and False if it isn't
         """
-        pass
+        if self.items.head is None:
+            return True
+        return False
 
     def enqueue(self, value):
         """
