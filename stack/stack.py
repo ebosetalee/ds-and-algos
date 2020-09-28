@@ -27,4 +27,6 @@ class Stack:
         """
         :returns: the value of the item at the tail
         """
+        if not self.items.tail:
+            return None
         return self.items.tail.value
