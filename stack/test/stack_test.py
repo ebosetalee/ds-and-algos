@@ -24,16 +24,32 @@ class TestStack(unittest.TestCase):
         self.assertEqual(stack.items.tail.value, 4)
 
     def test_pop_from_empty_stack(self):
-        pass
+        stack = Stack()
+        self.assertIsNone(stack.pop(), None)
 
     def test_pop_from_non_empty_stack_(self):
-        pass
+        stack = Stack()
+        stack.push(1)
+        stack.push(5)
+        stack.push(14)
+        stack.push(31)
+        self.assertEqual(stack.pop(), 31)
+        self.assertEqual(stack.items.walk(), [1, 5, 14])
 
     def test_peep_from_empty_stack(self):
-        pass
+        stack = Stack()
+        self.assertEqual(stack.items.walk(), [])
+        self.assertIsNone(stack.peek())
 
     def test_peep_from_non_empty_stack_(self):
-        pass
+        stack = Stack()
+        stack.push(5)
+        self.assertEqual(stack.peek(), 5)
+        stack.push(10)
+        self.assertEqual(stack.peek(), 10)
+        stack.push(19)
+        self.assertEqual(stack.peek(), 19)
+        self.assertEqual(stack.items.walk(), [5, 10, 19])
 
 
 if __name__ == '__main__':
