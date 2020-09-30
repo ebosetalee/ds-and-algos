@@ -1,6 +1,5 @@
 import unittest
 from hash_table.hash_table import HashTable
-from hash.hash import Hash
 
 
 class MyTestCase(unittest.TestCase):
@@ -8,26 +7,32 @@ class MyTestCase(unittest.TestCase):
         hash_table = HashTable()
         self.assertIsNone(hash_table.dict)
 
-    def test_hash_key(self):
-        key = "Jasmine Smith"
-        hash_function = Hash(key)
-        self.assertEqual(hash_function.key, 60)
-
-    def test_add(self):
+    def test_hash(self):
         hash_table = HashTable()
         value = "Jasmine Smith"
-        hash_table.add(value)
-        self.assertEqual(hash_table.dict, {60: "Jasmine Smith"})
+        self.assertEqual(hash_table.hash(value), 260)
 
-    def test_walk(self):
-        hash_table = HashTable()
-        hash_table.add("Jasmine Smith")
-        self.assertEqual(hash_table.walk(), {60: "Jasmine Smith"})
-
-    def test_find(self):
+    def test_get_not_in_dict(self):
         pass
 
-    def test_remove(self):
+    def test_set(self):
+        hash_table = HashTable()
+        value = "Jasmine Smith"
+        hash_table.set(value)
+        self.assertEqual(hash_table.dict, {260: "Jasmine Smith"})
+
+    def test_set_collision(self):
+        pass
+
+    def test_get_keys(self):
+        hash_table = HashTable()
+        hash_table.set("Jasmine Smith")
+        self.assertEqual(hash_table.get_keys(), {260: "Jasmine Smith"})
+
+    def test_has(self):
+        pass
+
+    def test_delete(self):
         pass
 
 
