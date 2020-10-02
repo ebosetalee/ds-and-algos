@@ -30,7 +30,7 @@ class MyTestCase(unittest.TestCase):
     def test_set_not_empty_hash_table(self):
         pass
 
-    def test_set_collision(self):
+    def test_set_collision_occurred(self):
         pass
 
     def test_get_keys(self):
