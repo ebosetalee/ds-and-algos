@@ -3,55 +3,81 @@ class HashTable:
         """
         Initialize the Hash Table here
         """
-        self.dict = None
+        self.MAX = 1000
+        self.table = [None for i in range(self.MAX)]
 
     def hash(self, value):
         """
         Calculate the value using ascii value to get the key
 
         :param value: the value to be calculated
+        :returns: The key for the table
         """
-        pass
+        key = 0
+        for char in value:
+            key += ord(char)
+        return key % self.MAX
 
     def get(self, value):
         """"
         Requests the key of the value
 
         :param value: The value of the key requested for
-        :returns: The key or None if not in the dict
+        :returns: The key or None if value not in table
         """
-        pass
+        for key, item in enumerate(self.table):
+            if item == value:
+                return key
+        return None
 
     def set(self, value):
         """
-        Adds the value and key to the dict
+        Adds the value to the table
 
         :param value: the value to be added
         """
-        pass
+        key = self.hash(value)
+        if not self.has(key):
+            self.table[key] = value
+        else:
+            added = 1
+            for index, item in enumerate(self.table):
+                key = self.hash(value) + added
+                if index == key:
+                    if not item:
+                        self.table[index] = value
+                    else:
+                        added += 1
 
     def get_keys(self):
         """"
-        Prints out all the items in the dict
+        Prints out all the item in the table
 
-        :returns: The keys and values in the dict
+        :returns: The values in the table
         """
-        return self.dict
+        values = [item for item in self.table if item]
+        return values
 
     def has(self, key):
         """
-        Searches the dict for the key
+        Searches the table for the key
 
         :param key: the key searched for
-        :return: True if the key is in the dict, or False if it isn't in the dict
+        :return: True if the key is in the table, or False if it isn't in the table
         """
-        pass
+        if self.table[key]:
+            return True
+        return False
 
     def delete(self, value):
         """
         Finds the vales and deletes it with its key
 
         :param value: the value to be deleted
-        :return: True if the value was deleted, or False if the value isn't in the dict
+        :return: True if the value was deleted, or False if the value isn't in the table
         """
-        pass
+        for index, item in enumerate(self.table):
+            if item == value:
+                self.table[index] = None
+                return True
+        return False
