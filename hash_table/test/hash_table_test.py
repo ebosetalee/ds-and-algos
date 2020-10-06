@@ -29,6 +29,14 @@ class MyTestCase(unittest.TestCase):
         hash_table.set(value)
         self.assertEqual(hash_table.get(value), 260)
 
+    def test_get_collision(self):
+        hash_table = HashTable()
+        hash_table.set("Jasmine Smith")
+        hash_table.set("Jasie Smminth")
+        self.assertEqual(hash_table.hash("Jasie Smminth"), 260)
+        self.assertEqual(hash_table.get("Jasie Smminth"), 261)
+        self.assertNotEqual(hash_table.get("Jasie Smminth"), 260)
+
     def test_set_collision_occurred(self):
         hash_table = HashTable()
         hash_table.set("Jasmine Smith")
@@ -54,7 +62,11 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(hash_table.has(260), False)
 
     def test_has_collision(self):
-        pass
+        hash_table = HashTable()
+        hash_table.set("Jasmine Smith")
+        hash_table.set("Jasie Smminth")
+        self.assertEqual(hash_table.has(hash_table.get("Jasie Smminth")), True)
+        self.assertEqual(hash_table.get_keys(), ["Jasmine Smith", "Jasie Smminth"])
 
     def test_delete_not_in_hash_table(self):
         hash_table = HashTable()
@@ -70,7 +82,14 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(hash_table.delete("Jasmine Smith"), True)
 
     def test_delete_collision_keys(self):
-        pass
+        hash_table = HashTable()
+        hash_table.set("Jasmine Smith")
+        hash_table.set("Jasie Smminth")
+        self.assertEqual(hash_table.get_keys(), ["Jasmine Smith", "Jasie Smminth"])
+        hash_table.delete("Jasie Smminth")
+        self.assertIsNone(hash_table.get("Jasie Smminth"))
+        self.assertEqual(hash_table.has(260), True)
+        self.assertEqual(hash_table.get_keys(), ["Jasmine Smith"])
 
 
 if __name__ == '__main__':
