@@ -1,6 +1,9 @@
 class TreeNode:
-    def __init__(self):
+    def __init__(self, value):
         """
-        Initialize the Tree Node here
+        Initialize the Binary Tree Node here
         """
-        pass
+        self.value = value
+        self.left = None
+        self.right = None
+        self.parent = None
