@@ -37,7 +37,7 @@ __Basic Operations:__
 5. Delete − Deletes an element using the given key.
 6. Reverse - Moves the head list to the last node.
 
-### SIMPLE / LINEAR LINKED LIST
+### SINGLY LINKED LIST
 __Linear Linked list__ is the default linked list and a linear data structure in which data is not stored in contiguous memory locations but each data node is connected to the next data node via a pointer, hence forming a chain.
 
 - __The element in such a linked list can be inserted in 2 ways:__
