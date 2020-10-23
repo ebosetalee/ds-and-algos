@@ -43,16 +43,16 @@ class Tree:
                 else:
                     return False
 
-    def display(self):
+    def display_preorder(self):
         """
         Prints out all the items in the tree starting from the root
 
         :returns: An array of the items in the tree
         """
         if self.root:
-            return self._display(self.root)
+            return self._display_preorder(self.root)
 
-    def _display(self, current_node=None):
+    def _display_preorder(self, current_node=None):
         """
         Prints out all the items in the tree starting from the root
 
@@ -61,9 +61,59 @@ class Tree:
         """
         elements = [current_node.value]
         if current_node.left:
-            elements += self._display(current_node.left)
+            elements += self._display_preorder(current_node.left)
         if current_node.right:
-            elements += self._display(current_node.right)
+            elements += self._display_preorder(current_node.right)
+        return elements
+
+    def display_inorder(self):
+        """
+        Prints out all the items in the tree starting from the root
+
+        :returns: An array of the items in the tree
+        """
+        if self.root:
+            return self._display_inorder(self.root)
+
+    def _display_inorder(self, current_node=None):
+        """
+        Prints out all the items in the tree starting from the root
+
+        :param current_node: Indicates the parent
+        :returns: An array of the items in the tree from left
+        """
+        elements = []
+        if current_node.left:
+            elements += self._display_inorder(current_node.left)
+
+        elements.append(current_node.value)
+
+        if current_node.right:
+            elements += self._display_inorder(current_node.right)
+
+        return elements
+
+    def display_postorder(self):
+        """
+        Prints out all the items in the tree starting from the root
+
+        :returns: An array of the items in the tree
+        """
+        if self.root:
+            return self._display_postorder(self.root)
+
+    def _display_postorder(self, current_node=None):
+        """
+        Prints out all the items in the tree starting from the root
+
+        :param current_node: Indicates the parent
+        :returns: An array of the items in the tree from left
+        """
+        elements = [current_node.value]
+        if current_node.right:
+            elements += self._display_postorder(current_node.right)
+        if current_node.left:
+            elements += self._display_postorder(current_node.left)
         return elements
 
     def find(self, value):
