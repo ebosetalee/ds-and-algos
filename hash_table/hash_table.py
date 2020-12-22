@@ -55,8 +55,7 @@ class HashTable:
 
         :returns: The values in the table
         """
-        values = [item for item in self.table if item]
-        return values
+        return [item for item in self.table if item]
 
     def has(self, key):
         """
@@ -65,9 +64,7 @@ class HashTable:
         :param key: the key searched for
         :return: True if the key is in the table, or False if it isn't in the table
         """
-        if self.table[key]:
-            return True
-        return False
+        return self.table[key] is not None
 
     def delete(self, value):
         """
